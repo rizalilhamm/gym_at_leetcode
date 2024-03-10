@@ -11,9 +11,8 @@ class LinkedList:
 
     def append(self, value):
         newNode = Node(value)
-        self.head.next = newNode
+        self.tail.next = newNode
         self.tail = newNode
-        self.length += 1
         return
     
     def prepend(self, value):
@@ -33,10 +32,17 @@ class LinkedList:
 
         return arr
 
-    def 
-
+    def insert(self, index, value):
+        if index >= self.length:
+            return self.append(value)
+        
+        newNode = Node(value)
+        
 
 if __name__ == "__main__":
     newLinkedList = LinkedList(10)
-    # newLinkedList.append(12)
+    newLinkedList.append(12)
+    newLinkedList.prepend(8)
+    newLinkedList.prepend(9)
+    newLinkedList.append(11)
     print(newLinkedList.printLinkedList())
