@@ -13,5 +13,5 @@ def reverseInteger(number):
     return reversed_num
     
 if __name__ == "__main__":
-    reversed_num = revertInteger(1234)
+    reversed_num = reverseInteger(1234)
     print(reversed_num)
