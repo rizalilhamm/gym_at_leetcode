@@ -37,7 +37,23 @@ class LinkedList:
             return self.append(value)
         
         newNode = Node(value)
+
+        leader = self.traverseToIndex(index-1)
+        holdingPointer = leader.next
+        leader.next = newNode
+        newNode.next = holdingPointer
+        return self.printLinkedList()
         
+    def traverseToIndex(self, index):
+        counter = 0
+        currNode = self.head
+
+        while (counter != index):
+            currNode = currNode.next
+            counter += 1
+
+        return currNode        
+
 
 if __name__ == "__main__":
     newLinkedList = LinkedList(10)
@@ -45,4 +61,6 @@ if __name__ == "__main__":
     newLinkedList.prepend(8)
     newLinkedList.prepend(9)
     newLinkedList.append(11)
-    print(newLinkedList.printLinkedList())
+    print('Sebelum: ', newLinkedList.printLinkedList())
+    newLinkedList.insert(2, 1000)
+    print('Sesudah:', newLinkedList.printLinkedList())
