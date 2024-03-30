@@ -38,9 +38,9 @@ class LinkedList:
         
         newNode = Node(value)
 
-        leader = self.traverseToIndex(index-1)
-        holdingPointer = leader.next
-        leader.next = newNode
+        curr_node = self.traverseToIndex(index-1)
+        holdingPointer = curr_node.next
+        curr_node.next = newNode
         newNode.next = holdingPointer
         return self.printLinkedList()
         
@@ -52,7 +52,13 @@ class LinkedList:
             currNode = currNode.next
             counter += 1
 
-        return currNode        
+        return currNode
+
+    def remove(self, idx):
+        curr_node = self.traverseToIndex(idx-1)
+        unwatched_node = curr_node.next
+        curr_node.next = unwatched_node.next
+        self.length -= 1
 
 
 if __name__ == "__main__":
@@ -61,6 +67,8 @@ if __name__ == "__main__":
     newLinkedList.prepend(8)
     newLinkedList.prepend(9)
     newLinkedList.append(11)
-    print('Sebelum: ', newLinkedList.printLinkedList())
+    print(newLinkedList.printLinkedList())
     newLinkedList.insert(2, 1000)
-    print('Sesudah:', newLinkedList.printLinkedList())
+    print(newLinkedList.printLinkedList())
+    newLinkedList.remove(2)
+    print(newLinkedList.printLinkedList())
